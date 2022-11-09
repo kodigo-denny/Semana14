@@ -1,20 +1,21 @@
 import { Component } from "react";
 import Contador from "./Contador";
+import ListaItems from "./ListaItems";
 
 class BotonCarrito extends Component{
     render(){
-        const {children, valor} = this.props;
+        const {children, valor, lista, quitarDelCarrito} = this.props;
+        
         return(
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <div className="dropdown">
+                <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {children}&nbsp;
                     <Contador valor={valor}></Contador>
                 </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <ul className="dropdown-menu">
+                    <ListaItems quitarDelCarrito={quitarDelCarrito} lista={lista}></ListaItems>
                 </ul>
+                
             </div>
         )
     }

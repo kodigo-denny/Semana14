@@ -4,7 +4,7 @@ class Contador extends Component{
     render(){
         const {valor} = this.props;
         return(
-            <span class="badge text-bg-danger">{valor}</span>
+            <span className="badge text-bg-warning">{valor}</span>
         )
     }
 }

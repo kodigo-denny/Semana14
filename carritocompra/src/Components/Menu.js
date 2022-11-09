@@ -3,7 +3,7 @@ import BotonCarrito from "./BotonCarrito";
 
 class Menu extends Component{
     render(){
-        const {children, valor} = this.props;
+        const {children, valor, lista, quitarDelCarrito} = this.props;
         return(
             <nav className="navbar navbar-expand-lg bg-light">
                 <div className="container-fluid">
@@ -16,7 +16,7 @@ class Menu extends Component{
 
                         </ul>
                         <div className="d-flex" >
-                            <BotonCarrito valor={valor}>Carrito de compra</BotonCarrito>
+                            <BotonCarrito quitarDelCarrito={quitarDelCarrito} valor={valor} lista={lista}>Carrito de compra</BotonCarrito>
                         </div>
                     </div>
                 </div>

@@ -11,16 +11,40 @@ class App extends Component{
       {id: 4, nombre: 'Lechuga', precio: 0.75, imagen: 'img/lechuga.jpg', cantidad:0},
     ],
     contador: 0,
+    clicks: 0,
   }
 
   agregarAlCarrito = (producto) => {
-    console.log("Se agrego", producto);
+    
+    for(let i = 0; i < this.state.productos.length; i++){
+      
+      if(producto.id == this.state.productos[i].id){
+        //if(this.state.productos[i].cantidad == 0){
+          this.setState({contador: this.state.contador+1});
+        //}
+        this.state.productos[i].cantidad = this.state.productos[i].cantidad + 1;
+        this.setState({clicks: this.state.clicks+1});
+      }
+    }
+    
+  }
+
+  quitarDelCarrito = (producto) => {
+    for(let i = 0; i < this.state.productos.length; i++){
+      if(producto.id == this.state.productos[i].id){
+        this.state.productos[i].cantidad = this.state.productos[i].cantidad - 1;
+        this.setState({clicks: this.state.clicks+1});
+        //if(this.state.productos[i].cantidad == 0){
+          this.setState({contador: this.state.contador-1});
+        //}
+      }
+    }
   }
 
   render(){
     return(
       <div>
-        <Menu valor={this.state.contador}>Nombre de la tienda</Menu>
+        <Menu quitarDelCarrito={this.quitarDelCarrito} valor={this.state.contador} lista={this.state.productos}>Nombre de la tienda</Menu>
         <ListaProductos agregarAlCarrito={this.agregarAlCarrito} lista={this.state.productos}></ListaProductos>
       </div>
     )
